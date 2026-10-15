@@ -28,7 +28,7 @@ class Category(Product):
         """Метод для добавления товара в категорию"""
         if isinstance(product_obj, Product):
             self.__products.append(product_obj)
-            Category.category_count += 1
+            Category.product_count += 1
         else:
             raise TypeError("В категорию можно добавить только объект класса Product")
 
