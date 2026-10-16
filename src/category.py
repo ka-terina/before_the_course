@@ -36,3 +36,7 @@ class Category(Product):
     def products(self):
         """Геттер, возвращающий список товаров в виде строк."""
         return [str(product) for product in self.__products]
+
+    def __str__(self):
+        """Форматирование строки для количества товаров"""
+        return f"{self.name}, количество продуктов: {self.product_count} шт."
