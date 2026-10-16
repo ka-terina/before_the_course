@@ -18,3 +18,48 @@ def test_product_init(product):
     assert product.description == "серый цвет"
     assert product.price == 180000.0
     assert product.quantity == 8
+
+
+def test_quantity_is_integer():
+    # Проверка, что quantity приводится к int (если передать float)
+    product = Product("Мышь", "Беспроводная мышь", 2000, 10.9)
+    assert isinstance(product.quantity, int)
+    assert product.quantity == 10
+
+
+def test_new_product_from_dict():
+    data = {
+        "name": "Клавиатура",
+        "description": "Механическая клавиатура",
+        "price": "5000",  # Передаем строкой, метод должен привести к float
+        "quantity": "2",  # Передаем строкой, метод должен привести к int
+    }
+    product = Product.new_product(data)
+
+    assert product.name == "Клавиатура"
+    assert product.description == "Механическая клавиатура"
+    assert product.price == 5000.0
+    assert product.quantity == 2
+
+
+def test_set_positive_price(product):
+    product.price = 3500
+    assert product.price == 3500
+
+
+def test_set_zero_price_rejected(product, capsys):
+    """Проверка, что при цене 0 выводится сообщение и цена не меняется"""
+    original_price = product.price
+    product.price = 0
+
+    captured = capsys.readouterr()
+    assert "Цена не должна быть нулевая или отрицательная" in captured.out
+    assert product.price == original_price
+
+
+def test_str_format_correct():
+    product = Product("Кофемашина", "Автоматическая кофемашина", 45000.75, 3)
+    result = str(product)
+    expected = "Кофемашина, 45000.75 руб. Остаток: 3 шт."
+
+    assert result == expected
