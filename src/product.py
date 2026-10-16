@@ -7,29 +7,3 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.__price = price
-        self.quantity = int(quantity)
-
-    @classmethod
-    def new_product(cls, data: dict) -> "Product":
-        return cls(
-            name=data["name"],
-            description=data["description"],
-            price=float(data["price"]),
-            quantity=int(data["quantity"]),
-        )
-
-    @property
-    def price(self):
-        return self.__price
-
-    @price.setter
-    def price(self, value):
-        if value <= 0:
-            print("Цена не должна быть нулевая или отрицательная")
-        else:
-            self.__price = value
-
-    def __str__(self):
-        # Форматирование строки для одного товара (используется в геттере категории)
-        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
