@@ -1,7 +1,7 @@
 from src.product import Product
 
 
-class Category(Product):
+class Category:
     category_count = 0
     product_count = 0
 
@@ -37,6 +37,14 @@ class Category(Product):
         """Геттер, возвращающий список товаров в виде строк."""
         return [str(product) for product in self.__products]
 
+    def get_total_quantity(self):
+        """Считает общее количество товаров на складе в категории"""
+        total = 0
+        for product in self.__products:
+            total += product.quantity
+            return total
+
     def __str__(self):
         """Форматирование строки для количества товаров"""
-        return f"{self.name}, количество продуктов: {self.product_count} шт."
+        total_q = self.get_total_quantity()
+        return f"{self.name}, количество продуктов: {total_q} шт."
