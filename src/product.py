@@ -31,5 +31,15 @@ class Product:
             self.__price = value
 
     def __str__(self):
-        # Форматирование строки для одного товара (используется в геттере категории)
+        # Форматирование строки для одного товара
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+    def total_cost(self):
+        """Возвращает общую стоимость этого товара на складе"""
+        return self.price * self.quantity
+
+    def __add__(self, other):
+        """Вычисляет полную стоимость всех товаров на складе"""
+        return self.total_cost() + other.total_cost()
+
+
