@@ -40,6 +40,27 @@ class Product:
 
     def __add__(self, other):
         """Вычисляет полную стоимость всех товаров на складе"""
+        if type(self) is not type(other):
+            raise TypeError("Нельзя складывать товары из разных классов")
         return self.total_cost() + other.total_cost()
 
 
+class Smartphone(Product):
+    def __init__(
+        self, name, description, price, quantity, efficiency, model, memory, color
+    ):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    def __init__(
+        self, name, description, price, quantity, country, germination_period, color
+    ):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
