@@ -63,3 +63,20 @@ def test_str_format_correct():
     expected = "Кофемашина, 45000.75 руб. Остаток: 3 шт."
 
     assert result == expected
+
+
+def test_sum_product():
+    """Проверка корректной работы метода add"""
+    product1 = Product(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5
+    )
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+
+    total1 = product1 + product2
+    total2 = product1 + product3
+    total3 = product2 + product3
+
+    assert total1 == 2580000.0
+    assert total2 == 1334000.0
+    assert total3 == 2114000.0
