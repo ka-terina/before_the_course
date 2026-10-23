@@ -80,3 +80,4 @@ def test_sum_product():
     assert total1 == 2580000.0
     assert total2 == 1334000.0
     assert total3 == 2114000.0
+
