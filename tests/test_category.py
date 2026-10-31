@@ -42,3 +42,7 @@ def test_category(category):
     assert products_list == expected_strings
     assert Category.category_count == 1
     assert Category.product_count == 2
+
+
+def test_middle_price(category):
+    assert category.middle_price() == 34545.454545454544

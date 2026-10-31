@@ -42,9 +42,23 @@ class Category:
         total = 0
         for product in self.__products:
             total += product.quantity
-            return total
+        return total
 
     def __str__(self):
         """Форматирование строки для количества товаров"""
         total_q = self.get_total_quantity()
         return f"{self.name}, количество продуктов: {total_q} шт."
+
+    def middle_price(self):
+        """Подсчитывает средний ценник всех товаров"""
+        total_q = self.get_total_quantity()
+        total_p = 0
+        for product in self.__products:
+            total_p += product.price
+        try:
+            result = total_p / total_q
+        except ZeroDivisionError:
+            print("В категории нет товаров")
+            return 0
+        else:
+            return result

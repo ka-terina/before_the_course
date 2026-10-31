@@ -81,3 +81,9 @@ def test_sum_product():
     assert total2 == 1334000.0
     assert total3 == 2114000.0
 
+
+def test_raises():
+    with pytest.raises(ValueError):
+        product1 = Product(
+            "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 0
+        )
